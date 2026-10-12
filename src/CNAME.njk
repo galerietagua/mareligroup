@@ -1,0 +1,8 @@
+---js
+{
+  eleventyExcludeFromCollections: true,
+  eleventyAllowMissingExtension: true,
+  eleventyComputed: { permalink: (data) => (data.site.domain ? "CNAME" : false) },
+}
+---
+{{ site.domain }}

@@ -1,0 +1,53 @@
+---
+layout: base.njk
+title: Služby
+description: Web & Development, AI & Automation a Digital Content – tři oblasti, které se navzájem doplňují.
+services:
+  - id: web
+    num: "01"
+    name: Web & Development
+    tone: web
+    icon: '<path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/>'
+    text: Tvorba webových stránek, firemních prezentací, landing pages a webových aplikací. Návrh struktury, uživatelského rozhraní, technické realizace a následné správy webů.
+    tags: [Firemní weby, Webové aplikace, UX/UI, Správa webů, Digitální platformy]
+  - id: ai
+    num: "02"
+    name: AI & Automation
+    tone: ai
+    icon: '<rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13v1M15 13v1M2 12v3M22 12v3"/>'
+    text: Využití umělé inteligence při tvorbě obsahu, komunikaci se zákazníky, zpracování informací a automatizaci rutinních procesů. Integrace dostupných AI nástrojů do webů a firemních systémů.
+    tags: [AI asistenti, Chatboti, Automatizace, AI integrace, Chytré pracovní postupy]
+  - id: digital
+    num: "03"
+    name: Digital Content
+    tone: digital
+    icon: '<path d="M3 10v4h3l5 4V6L6 10H3zM15.5 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/>'
+    text: Tvorba a zpracování digitálního obsahu pro webové stránky, sociální sítě, reklamní kampaně a online projekty. Texty, vizuály, produktové prezentace [DOPLNIT].
+    tags: [Texty, Vizuály, Sociální sítě, Kampaně, "[DOPLNIT]"]
+---
+<section class="page-hero">
+  {% set variant = "soft" %}{% include "waves.njk" %}
+  <div class="container">
+    <span class="pill reveal"><i></i>Služby</span>
+    <h1 class="reveal">Hlavní oblasti <span class="grad">činnosti</span></h1>
+    <p class="lead reveal">Web, AI a digitální obsah. Tři oblasti, které se navzájem doplňují.</p>
+  </div>
+</section>
+
+<section class="container services">
+  {%- for s in services %}
+  <article id="{{ s.id }}" class="service service--{{ s.tone }} reveal">
+    <div class="service-head">
+      <span class="icon icon--{{ s.tone }}"><svg viewBox="0 0 24 24" aria-hidden="true">{{ s.icon | safe }}</svg></span>
+      <span class="num">{{ s.num }}</span>
+      <h2>{{ s.name }}</h2>
+    </div>
+    <div class="service-body">
+      <p>{{ s.text }}</p>
+      <ul class="tags">{% for t in s.tags %}<li>{{ t }}</li>{% endfor %}</ul>
+    </div>
+  </article>
+  {%- endfor %}
+</section>
+
+{% set ctaTitle = "Máte projekt? Pojďme to probrat." %}{% include "cta.njk" %}

@@ -1,0 +1,65 @@
+{%- set s = site -%}
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{% if title %}{{ title }} · MARELI{% else %}MARELI – Web. AI. Digital.{% endif %}</title>
+<meta name="description" content="{{ description or s.description }}">
+<meta name="theme-color" content="#090C1A">
+{%- if s.domain %}
+<link rel="canonical" href="https://{{ s.domain }}{{ page.url }}">
+<meta property="og:url" content="https://{{ s.domain }}{{ page.url }}">
+{%- endif %}
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ title or 'MARELI – Web. AI. Digital.' }}">
+<meta property="og:description" content="{{ description or s.description }}">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+<script>document.documentElement.classList.add("js")</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "Organization", "name": "{{ s.name }}"{% if s.domain %}, "url": "https://{{ s.domain }}/"{% endif %} }
+</script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="MARELI s.r.o. – úvod">
+      {% include "logo-mark.njk" %}
+      <span class="brand-text"><b>MARELI</b><small>s.r.o.</small></span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Menu"><span></span><span></span></button>
+    <nav id="nav" class="nav">
+      {%- for item in nav %}
+      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+      <a class="btn btn--primary btn--sm nav-cta" href="/kontakt/">Nezávazná konzultace</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+{{ content | safe }}
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      {% include "logo-mark.njk" %}
+      <div><b>{{ s.name }}</b><span>IČO: {{ s.ico }} · {{ s.address }}</span></div>
+    </div>
+    <nav class="footer-nav" aria-label="Patička">
+      <a href="/o-nas/">O nás</a>
+      <a href="/sluzby/">Služby</a>
+      <a href="/kontakt/">Kontakt</a>
+      <a href="/ochrana-osobnich-udaju/">Ochrana osobních údajů</a>
+    </nav>
+    <p class="copy">© {{ "now" | year }} {{ s.name }}</p>
+  </div>
+</footer>
+<script src="/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{#- Svazek vlnovek; varianta "hero" je výraznější, "soft" jemná pro podstránky -#}
+{%- set n = 14 if variant == "hero" else 6 -%}
+<svg class="waves waves--{{ variant }}" viewBox="0 0 1600 420" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="wg-{{ variant }}" x1="0" x2="1">
+      <stop offset="0" stop-color="#4FC1B0" stop-opacity=".35"/>
+      <stop offset=".55" stop-color="#4B72F5" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#4B72F5" stop-opacity=".25"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#wg-{{ variant }})" stroke-width="1.2">
+  {%- for i in range(0, n) %}
+    <path d="M-20 {{ 300 + i*7 }} C 420 {{ 250 + i*9 }}, 760 {{ 360 - i*3 }}, 1100 {{ 200 + i*5 }} S 1500 {{ 60 + i*9 }}, 1640 {{ 90 + i*10 }}" opacity="{{ 0.25 + (i % 4) * 0.18 }}"/>
+  {%- endfor %}
+  </g>
+</svg>

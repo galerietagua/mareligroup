@@ -1,0 +1,31 @@
+---
+layout: base.njk
+---
+<section class="hero">
+  {% set variant = "hero" %}{% include "waves.njk" %}
+  <svg class="network" viewBox="-10 -10 520 580" aria-hidden="true">
+    <g class="network-lines">
+    {%- for l in network.lines %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}"/>{% endfor %}
+    </g>
+    <g class="network-nodes">
+    {%- for n in network.nodes %}<circle cx="{{ n[0] }}" cy="{{ n[1] }}" r="3.2" style="--d:{{ loop.index0 * 0.37 }}s"/>{% endfor %}
+    </g>
+    <circle class="network-ring" cx="222" cy="276" r="18"/>
+    <circle class="network-ring network-ring--inner" cx="222" cy="276" r="9"/>
+  </svg>
+  <div class="container hero-inner">
+    <span class="pill reveal"><i></i>Technologie s praktickým využitím</span>
+    <h1 class="hero-title reveal">Web. AI.<br><span class="grad">Digital</span><span class="dot">.</span></h1>
+    <p class="lead reveal">Propojujeme technologie, kreativitu a podnikání.</p>
+    <div class="actions reveal">
+      <a class="btn btn--primary btn--lg" href="/kontakt/">Domluvit konzultaci <span aria-hidden="true">→</span></a>
+      <a class="btn btn--ghost btn--lg" href="/sluzby/">Naše služby</a>
+    </div>
+  </div>
+</section>
+
+<section class="container pillars">
+  <a class="pillar reveal" href="/sluzby/#web"><h2 class="label label--web">WEB</h2><p>Moderní webové stránky, aplikace a online platformy.</p></a>
+  <a class="pillar reveal" href="/sluzby/#ai"><h2 class="label label--ai">AI</h2><p>Umělá inteligence, automatizace a inteligentní digitální nástroje.</p></a>
+  <a class="pillar reveal" href="/sluzby/#digital"><h2 class="label label--digital">DIGITAL</h2><p>Digitální obsah, online služby a rozvoj vlastních projektů.</p></a>
+</section>

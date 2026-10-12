@@ -1,0 +1,7 @@
+[
+  { "url": "/", "label": "Úvod" },
+  { "url": "/o-nas/", "label": "O nás" },
+  { "url": "/sluzby/", "label": "Služby" },
+  { "url": "/jak-pracujeme/", "label": "Jak pracujeme" },
+  { "url": "/kontakt/", "label": "Kontakt" }
+]

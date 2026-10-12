@@ -1,0 +1,29 @@
+---
+layout: base.njk
+title: Jak pracujeme
+description: Od nápadu ke spuštění ve čtyřech krocích – konzultace, návrh, realizace, péče a rozvoj.
+steps:
+  - { name: Konzultace, text: "Probereme vaše cíle, potřeby a rozpočet. Nezávazně." }
+  - { name: Návrh, text: "Připravíme řešení a vizuální návrh ke schválení." }
+  - { name: Realizace, text: "Vyvineme, otestujeme a spustíme. Průběžně vás informujeme." }
+  - { name: Péče a rozvoj, text: "Po spuštění zůstáváme. Spravujeme, vylepšujeme, měříme." }
+---
+<section class="page-hero">
+  {% set variant = "soft" %}{% include "waves.njk" %}
+  <div class="container">
+    <span class="pill pill--teal reveal"><i></i>Jak pracujeme</span>
+    <h1 class="reveal">Od nápadu ke spuštění <span class="grad">ve čtyřech krocích</span></h1>
+  </div>
+</section>
+
+<section class="container steps">
+  {%- for st in steps %}
+  <article class="step{% if loop.last %} step--last{% endif %} reveal">
+    <span class="step-num">0{{ loop.index }}</span>
+    <h2>{{ st.name }}</h2>
+    <p>{{ st.text }}</p>
+  </article>
+  {%- endfor %}
+</section>
+
+{% set ctaTitle = "Začneme nezávaznou konzultací." %}{% include "cta.njk" %}
