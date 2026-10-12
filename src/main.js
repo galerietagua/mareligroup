@@ -5,6 +5,7 @@ toggle?.addEventListener("click", () => {
   const open = toggle.getAttribute("aria-expanded") !== "true";
   toggle.setAttribute("aria-expanded", String(open));
   nav.classList.toggle("is-open", open);
+  document.body.classList.toggle("menu-open", open);
 });
 
 // Postupné zobrazení bloků při scrollu

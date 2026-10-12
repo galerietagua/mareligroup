@@ -72,10 +72,12 @@ p { margin: 0; }
 .label--digital { color: var(--teal); }
 
 /* ---------- Hlavička ---------- */
-.site-header {
-  position: sticky; top: 0; z-index: 50;
+.site-header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--line); }
+/* rozmazání je na pseudo-elementu: backdrop-filter přímo na hlavičce by z ní udělal
+   containing block pro position: fixed a mobilní menu by se zmenšilo na její výšku */
+.site-header::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
   background: rgba(9, 12, 26, .82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 78px; gap: 24px; }
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -277,7 +279,7 @@ p { margin: 0; }
   .nav-toggle[aria-expanded="true"] span:last-child { transform: translateY(-4px) rotate(-45deg); }
   .nav {
     position: fixed; inset: 78px 0 0 0; flex-direction: column; align-items: stretch; gap: 4px;
-    padding: 16px 24px 28px; background: rgba(9, 12, 26, .97); border-bottom: 1px solid var(--line);
+    padding: 16px 24px 28px; background: var(--bg); overflow-y: auto; border-bottom: 1px solid var(--line);
     transform: translateY(-8px); opacity: 0; visibility: hidden; transition: opacity .2s, transform .2s, visibility .2s;
   }
   .nav.is-open { transform: none; opacity: 1; visibility: visible; }
@@ -306,3 +308,6 @@ p { margin: 0; }
   .motto { padding: 90px 0; }
   .band { padding: 60px 0; }
 }
+
+/* při otevřeném mobilním menu se stránka pod ním neposouvá */
+body.menu-open { overflow: hidden; }
