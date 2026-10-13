@@ -13,16 +13,50 @@
 <meta property="og:url" content="https://{{ s.domain }}{{ page.url }}">
 {%- endif %}
 <meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:site_name" content="MARELI s.r.o.">
 <meta property="og:title" content="{{ title or 'MARELI – Web. AI. Digital.' }}">
 <meta property="og:description" content="{{ description or s.description }}">
+{%- if s.domain %}
+<meta property="og:image" content="https://{{ s.domain }}/img/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MARELI s.r.o. – Web. AI. Digital.">
+{%- endif %}
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/style.css">
 <script>document.documentElement.classList.add("js")</script>
 <script type="application/ld+json">
-{ "@context": "https://schema.org", "@type": "Organization", "name": "{{ s.name }}"{% if s.domain %}, "url": "https://{{ s.domain }}/"{% endif %} }
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": {{ s.name | dump | safe }},
+  "legalName": {{ s.name | dump | safe }},
+  "alternateName": ["MARELI", "Mareli Group"],
+  "description": {{ s.description | dump | safe }},
+  {%- if s.domain %}
+  "url": "https://{{ s.domain }}/",
+  "logo": "https://{{ s.domain }}/img/logo.png",
+  "image": "https://{{ s.domain }}/img/share.png",
+  {%- endif %}
+  "email": {{ s.email | dump | safe }},
+  "telephone": {{ s.phone | tel | dump | safe }},
+  "identifier": { "@type": "PropertyValue", "propertyID": "IČO", "value": {{ s.ico | dump | safe }} },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": {{ s.street | dump | safe }},
+    "addressLocality": {{ s.city | dump | safe }},
+    "postalCode": {{ s.zip | dump | safe }},
+    "addressCountry": "CZ"
+  }{% if s.sameAs and s.sameAs.length %},
+  "sameAs": {{ s.sameAs | dump | safe }}{% endif %}
+}
 </script>
 </head>
 <body>
